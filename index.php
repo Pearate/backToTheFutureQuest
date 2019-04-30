@@ -1,16 +1,16 @@
 <?php
-use BackToTheFuture\TimeTravel;
+require_once 'TimeTravel.php';
 
 
-
-$temps_diff=new TimeTravel("24/04/1954 12:10:00", "31/12/1985 21:00:00");
-echo "Entre le 10/05/1989 à 12:10:00 et le 04/09/2017 à 21:00:00".$temps_diff->getTravelInfo();
+$timeTravel = new TimeTravel(new DateTimeImmutable('1989-10-26 01:21:00', new DateTimeZone("America/New_York")), new DateTime('now'));
+echo "Entre le 26/10/1989 à 01:21:00 et aujourd'hui : ".$timeTravel->getTravelInfo();
 echo "</br>";
 
-$voyage = new TimeTravel("31-12-1985", "");
-echo "Le 31 décembre 1985, Doc s'est retrouvé projeté dans le temps, il a atteri le ".$voyage->findDate("PT1000000000S");
+$timeTravel-> setStart(new DateTimeImmutable('1985-12-31', new DateTimeZone("America/New_York")));
+
+
+echo "Parti le 31 décembre 1985, ".$timeTravel->findDate(-1000000000);
 echo "</br>";
 
-$periode = new TimeTravel("23-04-1954 06:35", "31-12-1985 06:35");
-echo "Doc et Martin doivent s'arrêter aux dates suivantes, en partant du ";
-$periode->backToFutureStepByStep("P1M8D");
+echo $timeTravel->backToFutureStepByStep(new DateTime('1999-10-15'));
+// echo "Doc et Martin doivent s'arrêter aux dates suivantes, en partant du ";
