@@ -12,5 +12,6 @@ $timeTravel-> setStart(new DateTimeImmutable('1985-12-31', new DateTimeZone("Ame
 echo "Parti le 31 décembre 1985, ".$timeTravel->findDate(-1000000000);
 echo "</br>";
 
-echo $timeTravel->backToFutureStepByStep(new DateTime('1999-10-15'));
-// echo "Doc et Martin doivent s'arrêter aux dates suivantes, en partant du ";
+echo "Lors de leur nouveau voyage, Doc et Martin doivent s'arrêter aux dates suivantes : ";
+echo "</br>";
+$timeTravel->backToFutureStepByStep('P1M8D');
